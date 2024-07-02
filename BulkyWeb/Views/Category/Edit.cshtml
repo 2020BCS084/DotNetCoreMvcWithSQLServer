@@ -1,0 +1,44 @@
+﻿@model Category
+
+<form method="post">
+    <input asp-for="Id" hidden />  <!--//we required to write this if our id name is other than Id-->
+                                   <!--If we dont add this id field then instead of editing, it will add the new record to the list. -->
+    <div class="border p-3 mt-4">
+        <div class="row pb-2">
+            <h2 class="text-dark">Edit Category</h2>
+            <hr />
+        </div>
+        <!-- <div asp-validation-summary="All"></div>   it shows the summary of all the errors at the top also.-->
+        <div class="mb-3 row p-1">
+            <label asp-for="Name" class="p-0"></label>
+            <input asp-for="Name" type="text" class="form-control" />
+            <span asp-validation-for="Name" class="text-danger"></span>
+        </div>
+        <div class="mb-3 row p-1">
+            <label asp-for="DisplayOrder" class="p-0"></label>
+            <input asp-for="DisplayOrder" class="form-control" />
+            <span asp-validation-for="DisplayOrder" class="text-danger"></span>
+        </div>
+
+        <div class="row">
+            <div class="col-6 col-md-3">
+                <button type="submit" class="btn btn-dark form-control">Update</button>
+            </div>
+            <div class="col-6 col-md-3">
+                <a asp-controller="Category" asp-action="Index" class="btn btn-outline-secondary form-control">
+                    Back to List.
+                </a>
+            </div>
+        </div>
+    </div>
+</form>
+
+
+<!--following code is used for the client side validation, till now we have seen only server side validation which is not performance efficient. -->
+<!--if custom validations are there then following code will show that else it will shown proper system validations.-->
+@section Scripts {
+    @{
+        <partial name="_ValidationScriptsPartial" />
+        //this _ValidationScriptsPartial is the name of the file present in Shared folder which is used for the validations
+    }
+}
