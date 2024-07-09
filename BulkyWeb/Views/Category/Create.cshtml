@@ -1,5 +1,9 @@
 ﻿@model Category
 
+@if (TempData["success"] != null)
+{
+    <h3>Not Created Yet.</h3>
+}
 <form method="post">
     <div class="border p-3 mt-4">
         <div class="row pb-2">

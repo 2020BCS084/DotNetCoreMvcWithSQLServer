@@ -12,11 +12,32 @@ namespace BulkyWeb.Controllers
         {
             _db = db;
         }
-        public IActionResult Index()                //this is action method.
+        public IActionResult Index()
         {
             List<Category> objCategoryList = _db.Categories.ToList();
 
-            return View(objCategoryList);
+            if (Request.Headers["Accept"].Contains("application/json"))
+            {
+                // Request accepts JSON, return JSON data
+                return new JsonResult(objCategoryList);
+            }
+            else
+            {
+                // Regular HTTP request or unsupported format, return the view
+                return View(objCategoryList);
+            }
+        }
+
+
+
+
+        public IActionResult Index2()                  //IMPORTANT    this is how we can return the json result and access it from postman
+        {
+            // Retrieve your category data (similar to your existing code)
+            List<Category> objCategoryList = _db.Categories.ToList();
+
+            // Return JSON data
+            return new JsonResult(objCategoryList);
         }
 
         public IActionResult Create()
@@ -109,6 +130,7 @@ namespace BulkyWeb.Controllers
 
             _db.Categories.Remove(obj);
             _db.SaveChanges();
+            TempData["delete"] = "deleted successfully";
             return RedirectToAction("Index");
         }
     }

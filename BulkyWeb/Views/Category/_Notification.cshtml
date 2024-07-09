@@ -1,0 +1,10 @@
+﻿@if(TempData["delete"]!=null){                  //we can also add this directly to any file but importing this file using partial would allow code reusibility.
+    <h2>@TempData["delete"]fff</h2>
+}
+@if (TempData["success"] != null)
+{                  //we can also add this directly to any file but importing this file using partial would allow code reusibility.
+    <h2>Created Successfully.</h2>
+}
+@if(TempData["error"]!=null){
+    <h2>Unable to create.</h2>
+}

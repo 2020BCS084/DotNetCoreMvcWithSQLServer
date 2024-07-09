@@ -1,7 +1,13 @@
 ﻿@model List<Category>
 
+@* @if (TempData["delete"] != null)                 //instead of writing this thing on every page from scrach we can write it in a file and then import from there like below.
+{
+    <h4>@TempData["delete"]</h4>
+} *@
 
 
+
+<partial name="_Notification" />         <!-- even rather than adding this for every page we can just add this in _layout page just before the renderbody .-->
 <div class="container">
     <div class="row pt-4 pb-23">
         <div class="col-6">

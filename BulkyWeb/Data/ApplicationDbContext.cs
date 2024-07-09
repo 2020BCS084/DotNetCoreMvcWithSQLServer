@@ -13,6 +13,8 @@ namespace BulkyWeb.Data
 
         }
 
+       
+
         //following method is used to create table in the database.
         public DbSet<Category> Categories { get; set; }     //here Category is the Model name and Categories is the table name for the Model table.
 
